@@ -4,7 +4,7 @@ import s from "./Sections.module.css";
 
 export function IdealCandidate() {
   return (
-    <section id="profilo" className="section" aria-labelledby="profilo-title">
+    <section id="profilo" className="section section-yellow" aria-labelledby="profilo-title">
       <div className={`container ${s.candidate}`}>
         <SectionHeading id="profilo-title" kicker={idealCandidate.kicker} title={idealCandidate.title} />
         <div>

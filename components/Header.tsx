@@ -34,7 +34,7 @@ export function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
         <a href="#top" className={styles.brand} aria-label="B&J Pub, torna all’inizio">
-          <Logo />
+          <Logo variant="mark" />
         </a>
 
         <nav className={styles.desktopNav} aria-label="Sezioni della pagina">

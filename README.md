@@ -42,9 +42,9 @@ public/images/        5 foto autentiche degli interni di B&J Pub a Ragusa (1800�
 | Cosa | Dove |
 |---|---|
 | Testi, cifre, FAQ | `lib/content.ts` (unica fonte: la tabella economica è `economicsTable`) |
-| Logo | `public/brand/`: `logo-originale.png` (file ricevuto, 150×150 su nero, intatto), `logo-scuro.png` (sfondo trasparente, "B&J" antracite + "Pub" rosso, per fondi chiari), `logo-chiaro.png` (trasparente, colori originali, per fondi scuri). Usati da `components/Logo.tsx`. Se arriva un SVG, cambiare i percorsi lì. |
+| Logo | `public/brand/`: `logo-colori.png` / `marchio-colori.png` (fondi chiari) e `logo-chiaro.png` / `marchio-chiaro.png` (bordeaux → crema, per fondi bordeaux), scontornati da `assets-originali/logo-bj-originale.png`. Il «marchio» è il logo senza payoff, usato nell’intestazione dove il payoff sarebbe illeggibile. Mai su fondo giallo (il payoff giallo sparirebbe). Componente: `components/Logo.tsx`. |
 | Foto prodotto | Copiare in `public/images/` i file `arrotolata-intera.webp`, `arrotolata-otto-pezzi.webp`, `arrotolata-farcitura.webp`, `arrotolata-preparazione.webp`, `arrotolata-packaging.webp`, poi in `lib/config.ts` (`productPhotos`) sostituire `src: null` con il percorso e verificare `width`/`height`. Finché tutte sono `null` compare il segnaposto «Foto autentica dell’arrotolata da inserire». |
-| Palette | Variabili CSS in `:root` dentro `app/globals.css` (provvisoria, da verificare col brand kit). |
+| Palette e font | Variabili in `:root` di `app/globals.css`: bordeaux `#560F11` e giallo `#FCB117` presi dal logo. Font Fredoka (titoli), Barlow Condensed (etichette, come il payoff del logo), Nunito (testo), ospitati dal sito tramite `next/font` (scaricati al build). |
 | Fasce di investimento | `investmentBands` in `lib/config.ts`. Vuoto = campo di testo libero; con valori approvati il modulo mostra una select e il server accetta solo quei valori. |
 | Consenso marketing | `marketingConsent` in `lib/config.ts` (oggi `null` = checkbox nascosta, consenso sempre `false`). |
 
@@ -133,9 +133,8 @@ Se GTM/GA4 mancano, `track()` non fa nulla e non lancia eccezioni.
 
 ## Blocker go-live
 
-- [x] Logo ricevuto e applicato (versioni trasparenti ricavate da un PNG di 150 px).
-- [ ] Logo in alta risoluzione o vettoriale (SVG) per nitidezza su schermi retina e per l’immagine social.
-- [ ] Palette verificata col brand kit (il rosso del logo è circa #BC1524; i pulsanti oggi usano il bordeaux provvisorio #571D2A).
+- [x] Logo ufficiale applicato (PNG 688×732 scontornato). Un SVG renderebbe il logo più nitido sugli schermi ad alta risoluzione.
+- [x] Palette e stile grafico allineati al logo.
 - [x] Foto dell’arrotolata in otto pezzi inserita (`public/images/arrotolata-otto-pezzi.webp`, ritoccata solo in luce, colore e nitidezza; originale intatto in `assets-originali/`).
 - [ ] Diritti d’uso della foto confermati. Altre foto (intera, farcitura, preparazione, packaging) facoltative: si aggiungono in `lib/config.ts`.
 - [ ] Conferma denominazioni e metrature STREET/FULL.

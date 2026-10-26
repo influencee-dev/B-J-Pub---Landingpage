@@ -1,35 +1,45 @@
 /* ---------------------------------------------------------------
-   Design token — palette PROVVISORIA (da verificare con logo e brand kit).
-   Per cambiarla basta modificare le variabili qui sotto.
+   Design token — colori presi dal logo ufficiale B&J.
+   Bordeaux #560F11 e giallo #FCB117 campionati dal file originale.
    --------------------------------------------------------------- */
 :root {
-  --c-ivory: #f6f1e8;
-  --c-white: #fffcf7;
-  --c-bordeaux: #571d2a;
-  --c-bordeaux-dark: #3f1420;
-  --c-anthracite: #242322;
-  --c-stone: #d8c6aa;
-  --c-stone-soft: #ebe1d0;
-  --c-grey: #6b635d;
-  --c-on-dark: #f6f1e8;
-  --c-on-dark-muted: #d6cbbb;
-  --c-error: #9b1c1c;
+  --c-brand: #560f11; /* bordeaux del logo */
+  --c-brand-dark: #3d0a0c;
+  --c-accent: #fcb117; /* giallo del logo */
+  --c-accent-dark: #e39a00;
+  --c-accent-soft: #ffe5a8;
+  --c-cream: #fff7e8; /* fondo pagina */
+  --c-white: #fffdf8;
+  --c-ink: #2b0b0c; /* testo */
+  --c-muted: #6b4744; /* testo secondario: 7:1 su crema */
+  --c-line: #e9cf9a;
+  --c-line-soft: #f3e3c2;
+  --c-on-dark: #fff3dc;
+  --c-on-dark-muted: #f0d9c4;
+  --c-error: #a3121a;
 
-  --font-serif: Georgia, "Palatino Linotype", Palatino, "Book Antiqua", "Times New Roman", serif;
-  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+  --font-label: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  /* compatibilità con i nomi usati nei moduli */
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
 
   --container: 1240px;
   --gutter: clamp(16px, 4vw, 40px);
-  --section-y: clamp(64px, 9vw, 128px);
-  --header-h: 64px;
-  --radius: 2px;
+  --section-y: clamp(64px, 9vw, 120px);
+  --header-h: 76px;
+  --radius: 14px;
+  --radius-lg: 28px;
+  --pop-shadow: 5px 5px 0 var(--c-brand);
+  --pop-shadow-accent: 8px 8px 0 var(--c-accent);
 
   --fs-body: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
   --fs-lead: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
-  --fs-h1: clamp(2.25rem, 1.55rem + 3.4vw, 4.25rem);
-  --fs-h2: clamp(1.875rem, 1.45rem + 2vw, 3rem);
-  --fs-h3: clamp(1.125rem, 1.05rem + 0.4vw, 1.3rem);
-  --fs-small: 0.875rem;
+  --fs-h1: clamp(2.4rem, 1.6rem + 3.6vw, 4.5rem);
+  --fs-h2: clamp(1.95rem, 1.5rem + 2vw, 3.1rem);
+  --fs-h3: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
+  --fs-small: 0.9rem;
 }
 
 *,
@@ -58,9 +68,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--c-ivory);
-  color: var(--c-anthracite);
-  font-family: var(--font-sans);
+  background: var(--c-cream);
+  color: var(--c-ink);
+  font-family: var(--font-body);
   font-size: var(--fs-body);
   line-height: 1.6;
   text-rendering: optimizeLegibility;
@@ -70,16 +80,17 @@ body {
 h1,
 h2,
 h3 {
-  font-family: var(--font-serif);
-  font-weight: 400;
-  line-height: 1.12;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.08;
   letter-spacing: -0.01em;
   margin: 0;
+  color: var(--c-brand);
   text-wrap: balance;
 }
-
 h1 {
   font-size: var(--fs-h1);
+  font-weight: 700;
 }
 h2 {
   font-size: var(--fs-h2);
@@ -88,9 +99,19 @@ h3 {
   font-size: var(--fs-h3);
 }
 
+.on-dark h1,
+.on-dark h2,
+.on-dark h3 {
+  color: var(--c-on-dark);
+}
+
 p {
   margin: 0;
   text-wrap: pretty;
+}
+
+strong {
+  font-weight: 800;
 }
 
 img {
@@ -100,17 +121,18 @@ img {
 }
 
 a {
-  color: var(--c-bordeaux);
+  color: var(--c-brand);
   text-underline-offset: 0.18em;
+  text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 3px solid var(--c-bordeaux);
+  outline: 3px solid var(--c-brand);
   outline-offset: 3px;
+  border-radius: 6px;
 }
-
 .on-dark :focus-visible {
-  outline-color: var(--c-stone);
+  outline-color: var(--c-accent);
 }
 
 section[id] {
@@ -141,108 +163,114 @@ section[id] {
   left: 16px;
   top: -100px;
   z-index: 100;
-  background: var(--c-anthracite);
-  color: var(--c-white);
+  background: var(--c-brand);
+  color: var(--c-on-dark);
   padding: 12px 16px;
+  border-radius: 999px;
   text-decoration: none;
 }
 .skip-link:focus {
   top: 12px;
 }
 
-/* ---------- Pulsanti ---------- */
+/* ---------- Pulsanti pop: pillola, bordo pieno, ombra netta ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6em;
-  min-height: 48px;
-  padding: 0.75em 1.5em;
-  border: 1.5px solid transparent;
-  border-radius: var(--radius);
-  font: 600 1rem/1.2 var(--font-sans);
+  gap: 0.55em;
+  min-height: 50px;
+  padding: 0.7em 1.6em;
+  border: 2.5px solid var(--c-brand);
+  border-radius: 999px;
+  font: 800 1rem/1.2 var(--font-body);
   letter-spacing: 0.01em;
   text-decoration: none;
   text-align: center;
   cursor: pointer;
   transition:
-    background-color 0.18s ease,
-    color 0.18s ease,
-    border-color 0.18s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
 }
 
 .btn-primary {
-  background: var(--c-bordeaux);
-  color: var(--c-white);
+  background: var(--c-accent);
+  color: var(--c-brand);
+  box-shadow: var(--pop-shadow);
 }
 .btn-primary:hover {
-  background: var(--c-bordeaux-dark);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--c-brand);
+}
+.btn-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--c-brand);
 }
 .btn-primary:disabled,
 .btn-primary[aria-disabled="true"] {
-  background: #8c7a7e;
+  background: #e8d3a6;
+  color: #6b4744;
+  box-shadow: none;
+  transform: none;
   cursor: not-allowed;
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--c-bordeaux);
-  border-color: var(--c-bordeaux);
+  background: var(--c-white);
+  color: var(--c-brand);
 }
 .btn-secondary:hover {
-  background: var(--c-bordeaux);
-  color: var(--c-white);
+  background: var(--c-brand);
+  color: var(--c-on-dark);
 }
 
 .on-dark .btn-primary {
-  background: var(--c-ivory);
-  color: var(--c-bordeaux);
+  border-color: var(--c-accent);
+  box-shadow: 5px 5px 0 var(--c-brand-dark);
 }
 .on-dark .btn-primary:hover {
-  background: var(--c-white);
+  box-shadow: 7px 7px 0 var(--c-brand-dark);
 }
 
 .btn-arrow {
-  font-family: var(--font-serif);
   font-size: 1.15em;
   line-height: 1;
 }
 
 /* ---------- Sezioni ---------- */
 .section {
+  position: relative;
   padding-block: var(--section-y);
 }
 .section-white {
   background: var(--c-white);
 }
-.section-dark {
-  background: var(--c-anthracite);
-  color: var(--c-on-dark);
+.section-yellow {
+  background: var(--c-accent-soft);
 }
+.section-dark,
 .section-bordeaux {
-  background: var(--c-bordeaux);
+  background: var(--c-brand);
   color: var(--c-on-dark);
 }
 
+/* Occhiello: etichetta a pillola gialla in carattere stretto, come il payoff del logo. */
 .kicker {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  margin: 0 0 20px;
-  font: 600 0.8125rem/1.3 var(--font-sans);
-  letter-spacing: 0.14em;
+  margin: 0 0 18px;
+  padding: 6px 14px 5px;
+  border-radius: 999px;
+  background: var(--c-accent);
+  color: var(--c-brand);
+  font: 700 0.98rem/1.15 var(--font-label);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--c-bordeaux);
 }
-.kicker::before {
-  content: "";
-  width: 28px;
-  height: 1px;
-  background: currentColor;
-  flex: none;
-}
-.on-dark .kicker {
-  color: var(--c-stone);
+.section-yellow .kicker {
+  background: var(--c-brand);
+  color: var(--c-accent);
 }
 
 .lead {
@@ -251,7 +279,7 @@ section[id] {
 }
 
 .muted {
-  color: var(--c-grey);
+  color: var(--c-muted);
 }
 .on-dark .muted {
   color: var(--c-on-dark-muted);
@@ -264,7 +292,7 @@ section[id] {
 .cta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px 16px;
+  gap: 14px 18px;
   margin-top: 36px;
 }
 
@@ -274,35 +302,17 @@ section[id] {
   }
 }
 
-/* Cornice fotografica: filo color pietra sfalsato, richiamo ai conci degli interni. */
+/* Cornice fotografica pop: angoli tondi, bordo bordeaux, ombra gialla netta. */
 .photo-frame {
   position: relative;
-  margin: 0;
-}
-.photo-frame::before {
-  content: "";
-  position: absolute;
-  inset: 14px -14px -14px 14px;
-  border: 1px solid var(--c-stone);
-  pointer-events: none;
+  margin: 0 8px 8px 0;
 }
 .photo-frame img {
   position: relative;
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-.photo-caption {
-  margin-top: 26px;
-  font-size: var(--fs-small);
-  color: var(--c-grey);
-}
-
-@media (max-width: 599px) {
-  .photo-frame::before {
-    inset: 8px -8px -8px 8px;
-  }
-  .photo-caption {
-    margin-top: 18px;
-  }
+  border: 3px solid var(--c-brand);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--pop-shadow-accent);
 }

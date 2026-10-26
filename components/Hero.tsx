@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { FORMAT_ANCHOR, PHOTO_HEIGHT, PHOTO_WIDTH, hero, venuePhotos } from "@/lib/content";
 import { CtaLink } from "./CtaLink";
+import { Spiral } from "./Spiral";
 import styles from "./Hero.module.css";
 
 export function Hero() {
@@ -11,7 +12,12 @@ export function Hero() {
         <div className={styles.copy}>
           <p className={styles.eyebrow}>{hero.eyebrow}</p>
           <h1 id="hero-title" className={styles.title}>
-            {hero.title}
+            {/* Stesso testo approvato, solo diviso per frase su righe separate. */}
+            {hero.title.split(/(?<=\.) /).map((sentence, i) => (
+              <span key={i} className={styles.titleLine}>
+                {sentence}{" "}
+              </span>
+            ))}
           </h1>
           <p className={`lead ${styles.subtitle}`}>{hero.subtitle}</p>
 
@@ -32,6 +38,7 @@ export function Hero() {
         </div>
 
         <figure className={styles.media}>
+          <Spiral className={styles.spiral} />
           <Image
             src={photo.src}
             alt={photo.alt}

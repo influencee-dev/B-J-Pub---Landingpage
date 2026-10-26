@@ -10,7 +10,7 @@ export function Footer() {
     <footer className={`${styles.footer} on-dark`}>
       <div className={`container ${styles.inner}`}>
         <div>
-          <Logo tone="light" size="footer" />
+          <Logo variant="full" tone="light" />
           <p className={styles.name}>{brand.fullName}</p>
           <p className={styles.place}>Dal 2002 a Ragusa</p>
         </div>

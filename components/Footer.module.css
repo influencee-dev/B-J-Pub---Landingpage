@@ -1,7 +1,9 @@
 .footer {
-  background: var(--c-anthracite);
+  position: relative;
+  background: var(--c-brand-dark);
+  border-top: 6px solid var(--c-accent);
   color: var(--c-on-dark-muted);
-  padding-block: 48px calc(48px + env(safe-area-inset-bottom));
+  padding-block: 56px calc(56px + env(safe-area-inset-bottom));
   font-size: var(--fs-small);
 }
 
@@ -14,7 +16,8 @@
 }
 
 .name {
-  margin-top: 14px;
+  margin-top: 20px;
+  font-weight: 700;
   color: var(--c-on-dark);
 }
 

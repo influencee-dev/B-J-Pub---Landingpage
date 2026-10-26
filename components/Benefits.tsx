@@ -4,7 +4,7 @@ import s from "./Sections.module.css";
 
 export function Benefits() {
   return (
-    <section id="vantaggi" className="section" aria-labelledby="vantaggi-title">
+    <section id="vantaggi" className="section section-yellow" aria-labelledby="vantaggi-title">
       <div className="container">
         <SectionHeading id="vantaggi-title" kicker={benefits.kicker} title={benefits.title} className={s.headNarrow} />
         <ol className={s.benefits}>
